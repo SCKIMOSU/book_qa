@@ -1,12 +1,25 @@
 <!-- qa/templates/qa/question_list.html -->
 <h1>Questions for "{{ book.title }}"</h1>
+
+<!-- 질문 목록 출력 -->
 <ul>
     {% for question in questions %}
-        <li>{{ question.content }} - {{ question.user_name }}
-            <a href="{% url 'answer_question' question.id %}">Answer</a>
+        <li>
+            <strong>{{ question.content }}</strong> (Asked by {{ question.user_name }})
+
+            <!-- 답변 리스트 출력 -->
+            <ul>
+                {% for answer in question.answers.all %}
+                    <li>{{ answer.content }} - Answered by {{ answer.user_name }} ({{ answer.created_at }})</li>
+                {% empty %}
+                    <li>No answers yet.</li>
+                {% endfor %}
+            </ul>
         </li>
     {% empty %}
         <li>No questions yet.</li>
     {% endfor %}
 </ul>
+
+<!-- 질문 작성 페이지 링크 -->
 <a href="{% url 'ask_question' book.id %}">Ask a question</a>
