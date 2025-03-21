@@ -1,0 +1,7 @@
+<!-- qa/templates/qa/ask_question.html -->
+<h1>Ask a question about "{{ book.title }}"</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Ask Question</button>
+</form>

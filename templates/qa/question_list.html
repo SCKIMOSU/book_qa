@@ -1,0 +1,12 @@
+<!-- qa/templates/qa/question_list.html -->
+<h1>Questions for "{{ book.title }}"</h1>
+<ul>
+    {% for question in questions %}
+        <li>{{ question.content }} - {{ question.user_name }}
+            <a href="{% url 'answer_question' question.id %}">Answer</a>
+        </li>
+    {% empty %}
+        <li>No questions yet.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'ask_question' book.id %}">Ask a question</a>

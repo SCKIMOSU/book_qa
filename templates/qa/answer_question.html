@@ -1,0 +1,7 @@
+<!-- qa/templates/qa/answer_question.html -->
+<h1>Answer for: "{{ question.content }}"</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Answer</button>
+</form>
