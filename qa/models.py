@@ -19,3 +19,4 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"Answer by {self.user_name} for {self.question}"
+
